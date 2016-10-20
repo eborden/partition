@@ -1,6 +1,12 @@
 #Generic Data.List.parttion
 An experiment in benchmarking a generic version of Data.List.partition.
 
+| Implementation | 10 nf    | 1000 nf  | 10 whnf  | 1000 whnf |
+|----------------|:--------:|:--------:|:--------:|:---------:|
+| Data.List      | 523.4 ns | 51.21 μs | 41.66 ns | 36.96 ns  |
+| generic lazy   | 410.4 ns | 42.06 μs | 34.75 ns | 28.25 ns  |
+| generic strict | 148.9 ns | 16.26 μs | 111.2 ns | 14.50 μs  |
+
 ```
 benchmarking list/nf 10
 time                 466.0 ns   (415.3 ns .. 523.5 ns)
