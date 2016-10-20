@@ -1,3 +1,6 @@
+#Generic Data.List.parttion
+An experiment in benchmarking a generic version of Data.List.partition.
+
 ```
 benchmarking list/nf 10
 time                 466.0 ns   (415.3 ns .. 523.5 ns)
@@ -27,6 +30,8 @@ mean                 36.96 ns   (35.59 ns .. 39.52 ns)
 std dev              5.777 ns   (4.115 ns .. 8.537 ns)
 variance introduced by outliers: 97% (severely inflated)
 
+
+
 benchmarking lazy/nf 10
 time                 370.2 ns   (359.5 ns .. 382.6 ns)
                      0.986 R²   (0.978 R² .. 0.994 R²)
@@ -54,6 +59,8 @@ time                 29.72 ns   (27.23 ns .. 32.77 ns)
 mean                 28.25 ns   (27.34 ns .. 30.06 ns)
 std dev              4.076 ns   (2.775 ns .. 6.606 ns)
 variance introduced by outliers: 96% (severely inflated)
+
+
 
 benchmarking strict/nf 10
 time                 145.9 ns   (140.9 ns .. 151.1 ns)
