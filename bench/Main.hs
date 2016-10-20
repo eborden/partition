@@ -1,3 +1,4 @@
+{-# LANGUAGE TypeApplications #-}
 module Main where
 
 import Criterion.Main
@@ -13,15 +14,15 @@ main = defaultMain
     , bench "whnf 1000"  $ whnf (List.partition (> 3)) [1..1000]
     ]
   , bgroup "lazy"
-    [ bench "nf 10"      $ nf (partition (> 3)) [1..10 :: Int]
-    , bench "nf 1000"    $ nf (partition (> 3)) [1..1000 :: Int]
-    , bench "whnf 10"    $ whnf (partition (> 3)) [1..10]
-    , bench "whnf 1000"  $ whnf (partition (> 3)) [1..1000]
+    [ bench "nf 10"      $ nf (partition @[] @[] @Int (> 3)) [1..10]
+    , bench "nf 1000"    $ nf (partition @[] @[] @Int (> 3)) [1..1000]
+    , bench "whnf 10"    $ whnf (partition @[] @[] (> 3)) [1..10]
+    , bench "whnf 1000"  $ whnf (partition @[] @[] (> 3)) [1..1000]
     ]
   , bgroup "strict"
-    [ bench "nf 10"      $ nf (partition' (> 3)) [1..10 :: Int]
-    , bench "nf 1000"    $ nf (partition' (> 3)) [1..1000 :: Int]
-    , bench "whnf 10"    $ whnf (partition' (> 3)) [1..10]
-    , bench "whnf 1000"  $ whnf (partition' (> 3)) [1..1000]
+    [ bench "nf 10"      $ nf (partition' @[] @[] @Int (> 3)) [1..10]
+    , bench "nf 1000"    $ nf (partition' @[] @[] @Int (> 3)) [1..1000]
+    , bench "whnf 10"    $ whnf (partition' @[] @[] (> 3)) [1..10]
+    , bench "whnf 1000"  $ whnf (partition' @[] @[] (> 3)) [1..1000]
     ]
   ]

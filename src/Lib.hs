@@ -2,23 +2,24 @@
 module Lib where
 
 import Data.Monoid
+import Control.Applicative
 
 partition, partition'
-  :: (Foldable t, Monoid (t a), Applicative t)
+  :: (Foldable t, Alternative s, Applicative s)
   => (a -> Bool)
   -> t a
-  -> (t a, t a)
+  -> (s a, s a)
 
-partition f = foldr f' (mempty, mempty)
+partition f = foldr f' (empty, empty)
   where
     f' x ~(ys, zs) =
       if f x
-        then (pure x <> ys, zs)
-        else (ys, pure x <> zs)
+        then (pure x <|> ys, zs)
+        else (ys, pure x <|> zs)
 
-partition' f = foldr f' (mempty, mempty)
+partition' f = foldr f' (empty, empty)
   where
     f' x (!ys, !zs) =
       if f x
-        then (pure x <> ys, zs)
-        else (ys, pure x <> zs)
+        then (pure x <|> ys, zs)
+        else (ys, pure x <|> zs)
