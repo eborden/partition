@@ -3,10 +3,11 @@ module Lib where
 
 import Data.Monoid
 
-partition, partition' :: (Foldable t, Monoid (t a), Applicative t)
-          => (a -> Bool)
-          -> t a
-          -> (t a, t a)
+partition, partition'
+  :: (Foldable t, Monoid (t a), Applicative t)
+  => (a -> Bool)
+  -> t a
+  -> (t a, t a)
 
 partition f = foldr f' (mempty, mempty)
   where
