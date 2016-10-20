@@ -5,7 +5,7 @@ import Data.Monoid
 import Control.Applicative
 
 partition, partition'
-  :: (Foldable t, Alternative s, Applicative s)
+  :: (Foldable t, Alternative s)
   => (a -> Bool)
   -> t a
   -> (s a, s a)
